@@ -120,7 +120,7 @@ Validation is handled by [Validate.js](http://validatejs.org). Specify your vali
 console.log(blogEntry.validate().errors);
 ```
 
-Custom validator functions can be specified within the `customValidators` field of your Model options. They work per the Validate.js documentation](http://validatejs.org).
+Custom validator functions can be specified within the `customValidators` field of your Model options. They work per the [Validate.js documentation](http://validatejs.org).
 
 ```javascript
 customValidators: {
