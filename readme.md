@@ -7,6 +7,10 @@ Right now it is built for Node.js, but browser support is coming soon. It can be
 
 For issues and feature requests visit the [issue tracker](https://github.com/colinskow/sofa-model/issues).
 
+Build status
+---
+[![Build Status](https://travis-ci.org/colinskow/sofa-model.png?branch=master)](https://travis-ci.org/colinskow/sofa-model)
+
 Basic Usage
 ---
 
@@ -153,6 +157,7 @@ Sanitize functions: (see the [Validator.js documentation](https://github.com/chr
 - stripLow
 - whiteList
 - blackList
+- normalizeEmail
 - append (string)
 - prepend (string)
 - toUpperCase
