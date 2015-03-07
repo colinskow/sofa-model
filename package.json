@@ -1,0 +1,37 @@
+{
+  "name": "sofa-model",
+  "version": "0.1.0",
+  "description": "A simple model class to sanitize and validate your javascript data.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colinskow/sofa-model.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "model",
+    "validation",
+    "sanitization"
+  ],
+  "author": "Colin Skow",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.13",
+    "deepmerge": "^0.2.7",
+    "validate.js": "^0.5.0",
+    "validator": "^3.33.0"
+  },
+  "devDependencies": {
+    "chai": "^2.1.1",
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
+    "gulp-mocha": "^2.0.0",
+    "jshint-stylish": "^1.0.1",
+    "memdown": "^1.0.0",
+    "mocha": "^2.2.0",
+    "pouchdb": "^3.3.1",
+    "pouchdb-seed-design": "0.0.6"
+  }
+}
