@@ -1,11 +1,9 @@
 Sofa Model
 ===
 
-Sofa Model is a simple model class to sanitize and validate your data. It is 100% data store agnostic and perfect for
-use with schema-less NoSQL DBs like CouchDB.
+Sofa Model is a simple model class to sanitize and validate your data. It is 100% data store agnostic and perfect for use with schema-less NoSQL DBs like CouchDB.
 
-Right now it is built for Node.js, but browser support is coming soon. It can be used 100% synchronously, or
-asynchronously based on Promises.
+Right now it is built for Node.js, but browser support is coming soon. It can be used 100% synchronously, or asynchronously based on Promises.
 
 For issues and feature requests visit the [issue tracker](https://github.com/colinskow/sofa-model/issues).
 
@@ -84,9 +82,7 @@ This outputs:
 
 Async Usage
 ---
-Simply add `async: true` to the options when you instantiate your model. Each transformation you apply to the model 
-will then return a Promise that will resolve with the result of the transformation. If there are validation errors the 
-promise will be rejected with the list of errors.
+Simply add `async: true` to the options when you instantiate your model. Each transformation you apply to the model will then return a Promise that will resolve with the result of the transformation. If there are validation errors the promise will be rejected with the list of errors.
 
 ```javascript
 testModelOptions.async = true;
@@ -114,15 +110,13 @@ var blogEntry = new BlogpostModel(data);
 
 ### Validate
 
-Validation is handled by [Validate.js](http://validatejs.org). Specify your validation constraints in `options.validate`
-when you instantiate your model. To get a list of errors (with synchronous validation):
+Validation is handled by [Validate.js](http://validatejs.org). Specify your validation constraints in `options.validate` when you instantiate your model. To get a list of errors (with synchronous validation):
 
 ```javascript
 console.log(blogEntry.validate().errors);
 ```
 
-Custom validator functions can be specified within the `customValidators` field of your Model options. They work per the
-Validate.js documentation](http://validatejs.org).
+Custom validator functions can be specified within the `customValidators` field of your Model options. They work per the Validate.js documentation](http://validatejs.org).
 
 ```javascript
 customValidators: {
@@ -137,9 +131,7 @@ customValidators: {
 
 ### Sanitize
 
-Sanitize is handled mostly by [Validator.js](https://github.com/chriso/validator.js). `options.sanitize` is an object
-where the keys correspond to the data fields you want to process. The value is either an array of operations you
-want to apply or an object where is key is an operation and the value represents the options for that operation.
+Sanitize is handled mostly by [Validator.js](https://github.com/chriso/validator.js). `options.sanitize` is an object where the keys correspond to the data fields you want to process. The value is either an array of operations you want to apply or an object where is key is an operation and the value represents the options for that operation.
 
 ```javascript
 sanitize: {
@@ -171,13 +163,11 @@ Custom sanitizer functions can be specified within the `customSanitizers` field 
 
 ### Whitelist
 
-A list of fields that are allowed to be present in your output data. If the Whitelist option is specified, any field not
-specifically whitelisted will be removed.
+A list of fields that are allowed to be present in your output data. If the Whitelist option is specified, any field not specifically whitelisted will be removed.
 
 ### Blacklist
 
-A list of fields that are not allowed in your output data. Any field specified under blacklist will be removed if
-present.
+A list of fields that are not allowed in your output data. Any field specified under blacklist will be removed if present.
 
 ### Rename
 
@@ -214,8 +204,7 @@ Applies `whitelist`, `blacklist`, `sanitize`, `validate`, `rename`, and `static`
 
 ### Results
 
-For synchronous use, all of Sofa Model's methods are chained. To get the final results, simply access the `results`
-property. Note that you need to specifically check the `errors` property to detect validation errors.
+For synchronous use, all of Sofa Model's methods are chained. To get the final results, simply access the `results` property. Note that you need to specifically check the `errors` property to detect validation errors.
 
 For async use the results are returned as each promise resolves. Validation errors will cause the promise to reject.
 
