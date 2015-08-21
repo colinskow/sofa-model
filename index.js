@@ -139,7 +139,6 @@ var whitelist = function(doc, list) {
 };
 
 var blacklist = function(doc, list) {
-  console.log(doc);
   for(var item in list) {
     var selected = utils.getObjectRef(doc, item);
     if(typeof selected !== 'undefined') {

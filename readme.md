@@ -216,3 +216,14 @@ For async use the results are returned as each promise resolves. Validation erro
 ```javascript
 var results = blogEntry.validate().sanitize().results;
 ```
+
+Changes
+---
+
+### 0.2.0 (August 21, 2015)
+
+* **Breaking:** Updated dependencies and there were some breaking changes in [Validate.js](http://validatejs.org), which could cause your models to behave differently. Specifically when you write custom async validators, you must use Promise.resolve(err) instead of reject. See their documentation for details.
+
+### 0.1.0 (March 7, 2015)
+
+* Initial release

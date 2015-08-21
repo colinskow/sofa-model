@@ -79,8 +79,6 @@ describe('Model', function() {
     expect(testUser.errors).to.have.property('telephones.work');
     expect(results.renamed).to.equal('test');
     expect(results).not.to.have.property('rename');
-    console.log(results);
-    console.log(testUser.errors);
   });
 
   it('Should whitelist objects correctly', function() {
@@ -89,9 +87,7 @@ describe('Model', function() {
     };
     var user = new model(options);
     var testUser = new user(testData);
-    // console.log(testUser.results);
     var results = testUser.whitelist().results;
-    console.log(results);
     expect(results).to.have.property('name');
     expect(results).to.have.deep.property('telephones.home');
     expect(results).to.not.have.property('age');
@@ -108,7 +104,6 @@ describe('Model', function() {
       }
     };
     var results = testUser.merge(original).results;
-    console.log(results);
     expect(results.name).to.equal("Colin ");
     expect(results.secret).to.equal("don't tell");
     expect(results.telephones.home).to.equal("123");
@@ -131,7 +126,6 @@ describe('Model', function() {
         testUser = new user(testData);
         testUser.sanitize()
           .then(function(results) {
-            console.log(results);
             expect(results.name).to.equal('Mr. COLIN');
             done();
           });
