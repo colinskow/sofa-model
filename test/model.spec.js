@@ -89,7 +89,7 @@ describe('Model', function() {
     var testUser = new user(testData);
     var results = testUser.whitelist().results;
     expect(results).to.have.property('name');
-    expect(results).to.have.deep.property('telephones.home');
+    expect(results.telephones).to.have.property('home');
     expect(results).to.not.have.property('age');
   });
 
