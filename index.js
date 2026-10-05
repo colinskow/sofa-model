@@ -26,9 +26,13 @@ module.exports = function(options) {
       if(typeof options.validate !== 'object') {
         return self;
       }
+      
+      // Security: Prevent RegEx DoS by limiting input length
+      var sanitizedResults = self.sanitizeForValidation(self.results);
+      
       if(options.async) {
         return new Promise(function(resolve, reject) {
-          validate.async(self.results, options.validate, options.valOptions || {})
+          validate.async(sanitizedResults, options.validate, options.valOptions || {})
             .then(function() {
               resolve(self.results);
             }, function(err) {
@@ -37,9 +41,32 @@ module.exports = function(options) {
             });
         });
       } else {
-        self.errors = validate(self.results, options.validate, options.valOptions || {}) || null;
+        self.errors = validate(sanitizedResults, options.validate, options.valOptions || {}) || null;
         return self;
       }
+    };
+
+    // Security function to prevent RegEx DoS attacks
+    this.sanitizeForValidation = function(obj) {
+      var MAX_STRING_LENGTH = 10000; // Prevent extremely long strings that could cause RegEx DoS
+      
+      function sanitizeValue(value) {
+        if (typeof value === 'string' && value.length > MAX_STRING_LENGTH) {
+          return value.substring(0, MAX_STRING_LENGTH);
+        }
+        if (typeof value === 'object' && value !== null) {
+          var sanitized = {};
+          for (var key in value) {
+            if (value.hasOwnProperty(key)) {
+              sanitized[key] = sanitizeValue(value[key]);
+            }
+          }
+          return sanitized;
+        }
+        return value;
+      }
+      
+      return sanitizeValue(obj);
     };
 
     this.sanitize = function() {
